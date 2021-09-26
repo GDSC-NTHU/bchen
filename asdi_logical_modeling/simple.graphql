@@ -1,0 +1,32 @@
+interface User {
+  id:ID
+  name: String!
+  isEnable: Boolean!
+}
+
+type Viewer implements User {
+  subscribers: [Youtuber]
+  watchlist:[Video]
+}
+
+type Youtuber implements User {
+	subscribes: Int!
+  videos: [Video]
+}
+
+
+type Video {
+  title: String!
+  views: Int!
+  producer: Youtuber!
+  likes: Int!
+  dislikes: Int!
+  description: String!
+  comments: [Comment]
+}
+
+type Comment {
+  poster: User!
+  comment: String!
+  likes: [User]
+}
